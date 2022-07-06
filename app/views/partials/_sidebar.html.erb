@@ -1,0 +1,22 @@
+<div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+  <div class="nano">
+    <div class="nano-content">
+      <div class="logo"><a href="index.html"><!-- <img src="images/logo.png" alt="" /> --><span>Focus</span></a></div>
+      <ul>
+        <li class="label"><i class="bi bi-arrow-left-right"></i>Catalogo de publicaciones</li>
+        <li><a href="#"><i class="bi bi-journals"></i>Ver todas</a></li>
+        <% if current_user %>
+          <li><a href="#"><i class="bi bi-journal-check"></i>Mis publicaciones</a></li>
+        <% end %>
+
+        <li class="label"><i class="bi bi-person-circle"></i> Inicio de session</li>
+        <% if current_user %>
+          <li><%= link_to "<i class=\"bi bi-door-closed\"></i>Salir".html_safe, destroy_user_session_path, data: { turbo_method: :delete } %></li>
+        <% else %>
+          <li><%= link_to "<i class=\"bi bi-door-open\"></i>Ingresar".html_safe, user_session_path %></li>
+          <li><%= link_to "<i class=\"bi bi-file-person\"></i>Registrarme".html_safe, new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
