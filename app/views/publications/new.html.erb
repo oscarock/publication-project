@@ -1,0 +1,15 @@
+<h1 class="text-center mt-5">Nueva publicación</h1>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="login-form">
+          <%= render "form", publication: @publication,  is_editable: false %>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <%= link_to "Back to publications", publications_path %>
+</div>

@@ -1,0 +1,84 @@
+<%= form_with(model: publication, data: { controller: 'publication' }, html: { class: 'needs-validation', novalidate: true }) do |form| %>
+  <% if publication.errors.any? %>
+    <div class="text-danger">
+      <h2 class="text-danger">No se puede guardar porque contiene errores</h2>
+      <ul>
+        <% publication.errors.each do |error| %>
+          <li><%= error.message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= form.label :title, "Titulo" %>
+      <%= form.text_field :title, class: "form-control border border-secondary", placeholder: "Titulo", :required => true %>
+      <div class="invalid-feedback">
+        El titulo es obligatorio
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= form.label :description, "Descripción" %>
+      <%= form.text_area :description, class: "form-control border border-secondary", placeholder: "Descripción", :required => true %>
+      <div class="invalid-feedback">
+        La descipcion es obligatorio
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= form.label :price, "Precio" %>
+      <%= form.number_field :price, class: "form-control border border-secondary", placeholder: "Precio", :required => true %>
+      <div class="invalid-feedback">
+        El precio es obligatorio
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= form.label :city, "Ciudad" %>
+      <%= form.text_field :city, class: "form-control border border-secondary", placeholder: "Ciudad", :required => true %>
+      <div class="invalid-feedback">
+        La ciudad es obligatorio
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= form.label :address, "Dirección" %>
+      <%= form.text_field :address, class: "form-control border border-secondary", placeholder: "Dirección", :required => true %>
+      <div class="invalid-feedback">
+        La direccion es obligatorio
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= form.label :phone, "Telefono" %>
+      <%= form.text_field :phone, class: "form-control border border-secondary", placeholder: "Telefono", :required => true %>
+      <div class="invalid-feedback">
+        El telefono es obligatorio
+      </div>
+    </div>
+
+    <% if is_editable %>
+      <div class="form-group col-md-6">
+        <%= form.label :visible, "Quieres que se muestre el anuncio ?" %>
+        <div class="form-check">
+          <%= form.radio_button :visible, true, class: "form-check-input" %>
+          <label class="form-check-label">
+            Si
+          </label>
+        </div>
+        <div class="form-check">
+          <%= form.radio_button :visible, false, class: "form-check-input" %>
+          <label class="form-check-label">
+            No
+          </label>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="form-group col-md-12">
+      <%= form.submit is_editable ? "Editar" : "Agregar", class: "btn btn-primary btn-flat m-b-30 m-t-30", data: { action: 'publication#validations' } %>
+    </div>
+    </div>
+<% end %>
+
