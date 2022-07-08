@@ -1,0 +1,19 @@
+<% if notice %>
+  <div id="toast-container" class="toast-top-right">
+    <div class="toast toast-success" aria-live="polite" style="display: block;">
+      <button type="button" class="toast-close-button" role="button">×</button>
+      <div class="toast-title">Mensaje exitoso</div>
+      <div class="toast-message"><%= notice %></div>
+    </div>
+  </div>
+<% end %>
+
+<% if alert %>
+<div id="toast-container" class="toast-top-right">
+  <div class="toast toast-error" aria-live="polite" style="display: block;">
+    <button type="button" class="toast-close-button" role="button">×</button>
+    <div class="toast-title">Mensaje error</div>
+    <div class="toast-message"><%= alert %></div>
+  </div>
+</div>
+<% end %>

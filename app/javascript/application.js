@@ -5,3 +5,9 @@ import "jquery"
 import "jquery_ujs"
 import "popper"
 import "bootstrap"
+
+$('.toast-top-right').delay(2000).hide(500);
+
+$('.toast-close-button').on("click", function() {
+    $(".toast-top-right").hide()
+})

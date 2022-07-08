@@ -10,19 +10,19 @@
     <%= stylesheet_link_tag "style", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "sidebar", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "toastr.min", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-  <div class="col-md-12 text-center">
-    <p class="text-danger h2"><%= alert %></p>
-  </div>
-
+  <%= render 'partials/messages' %>
   <%= render partial: "partials/sidebar" %>
   <%= yield %>
 
   <%= javascript_include_tag("jquery") %>
   <%= javascript_include_tag("jquery.nanoscroller.min") %>
   <%= javascript_include_tag("sidebar") %>
+  <%= javascript_include_tag("toastr.min") %>
+  <%= javascript_include_tag("toastr.init") %>
   </body>
 </html>

@@ -1,10 +1,70 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @publication %>
-
-<div>
-  <%= link_to "Edit this publication", edit_publication_path(@publication) %> |
-  <%= link_to "Back to publications", publications_path %>
-
-  <%= button_to "Destroy this publication", @publication, method: :delete %>
-</div>
+<section id="main-content">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-lg-12 w-75">
+        <div class="card">
+          <div class="card-body">
+            <div class="user-profile">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="https://dummyimage.com/400x400/000/fff" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="https://dummyimage.com/400x400/000/fff" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="https://dummyimage.com/400x400/000/fff" class="d-block w-100" alt="...">
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="user-profile-name fs-2"><%= @publication.title %></div>
+                  <div class="user-job-title fs-5"><%= @publication.city %></div>
+                  <hr>
+                  <div class="ratings">
+                    <h4 class="fs-6">Descripcion</h4>
+                    <div class="rating-star">
+                      <p class="text-justify fs-6"><%= @publication.description %></p>
+                      <hr>
+                    </div>
+                  </div>
+                  <div class="user-send-message">
+                    <h4 class="fs-6">Precio:
+                      <span class="badge badge-success"><i class="bi bi-cash-coin"></i> <%= @publication.price %></span>
+                    </h4>
+                    <h4 class="fs-6">Telefono:
+                      <span class="badge badge-info"><i class="bi bi-telephone-fill"></i> <%= @publication.phone %></span>
+                    </h4>
+                    <h4 class="fs-6">Dirección:
+                      <span class="badge badge-primary"><i class="bi bi-pin-map"></i> <%= @publication.address %></span>
+                    </h4>
+                    <hr>
+                  </div>
+                  <div class="user-send-message">
+                    <%= link_to "<i class=\"bi bi-journal-medical\"></i>Editar".html_safe, edit_publication_path(@publication), class: "btn btn-secondary btn-addon" %>
+                    <br><br>
+                    <%= button_to "<i class=\"bi bi-trash\"></i>Eliminar".html_safe, @publication, method: :delete, form: { data: { turbo_confirm: 'Esta seguro de eliminar la publicación ?' } }, class: "btn btn-danger btn-addon" %>
+                    <br><br>
+                    <%= link_to "<i class=\"bi bi-arrow-bar-left\"></i>Regresar a publicaciones".html_safe, publications_path, class: "link-primary" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

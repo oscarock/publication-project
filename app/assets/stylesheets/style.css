@@ -1501,6 +1501,12 @@ footer p {
 .legal {
   width: 70%;
 }
+.cards-grid{
+  margin-right: 6%;
+}
+.text-justify {
+  text-align: justify;
+}
 /* All Invoice Page Responsive
 --------------------------- */
 @media (max-width: 480px) {
