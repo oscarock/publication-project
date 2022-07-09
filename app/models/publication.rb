@@ -9,7 +9,7 @@
 #  city        :string
 #  address     :string
 #  phone       :string
-#  visible     :boolean
+#  visible     :boolean          default(TRUE)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -24,4 +24,11 @@ class Publication < ApplicationRecord
   validates :address, presence: { message: "La direccion es obligatorio"}
   validates :phone, presence: { message: "El telefono es obligatorio"}
   validates :phone, numericality: { only_integer: true, message: "El telefono debe tener solo numeros" }
+
+  #relations
+  has_many :publication_categories, :dependent => :destroy
+  has_many :categories, through: :publication_categories
+
+  #nested attributes
+  accepts_nested_attributes_for :categories
 end

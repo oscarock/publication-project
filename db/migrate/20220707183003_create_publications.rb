@@ -7,7 +7,7 @@ class CreatePublications < ActiveRecord::Migration[7.0]
       t.string :city
       t.string :address
       t.string :phone
-      t.boolean :visible
+      t.boolean :visible, default: true
 
       t.timestamps
     end

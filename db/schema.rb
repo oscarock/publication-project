@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_07_183003) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_09_015001) do
+  create_table "categories", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "publication_categories", force: :cascade do |t|
+    t.integer "publication_id", null: false
+    t.integer "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_publication_categories_on_category_id"
+    t.index ["publication_id"], name: "index_publication_categories_on_publication_id"
+  end
+
   create_table "publications", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -18,7 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_07_183003) do
     t.string "city"
     t.string "address"
     t.string "phone"
-    t.boolean "visible"
+    t.boolean "visible", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,4 +52,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_07_183003) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "publication_categories", "categories"
+  add_foreign_key "publication_categories", "publications"
 end

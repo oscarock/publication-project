@@ -9,7 +9,7 @@
 #  city        :string
 #  address     :string
 #  phone       :string
-#  visible     :boolean
+#  visible     :boolean          default(TRUE)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

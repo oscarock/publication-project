@@ -1,21 +1,16 @@
 # == Schema Information
 #
-# Table name: publications
+# Table name: categories
 #
 #  id          :integer          not null, primary key
 #  title       :string
 #  description :text
-#  price       :integer
-#  city        :string
-#  address     :string
-#  phone       :string
-#  visible     :boolean          default(TRUE)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 require "test_helper"
 
-class PublicationTest < ActiveSupport::TestCase
+class CategoryTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

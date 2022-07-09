@@ -32,24 +32,25 @@
                 <div class="col-lg-6">
                   <div class="user-profile-name fs-2"><%= @publication.title %></div>
                   <div class="user-job-title fs-5"><%= @publication.city %></div>
+                  <div class="user-Location"><%= date_format @publication.created_at %></div>
                   <hr>
                   <div class="ratings">
                     <h4 class="fs-6">Descripcion</h4>
                     <div class="rating-star">
                       <p class="text-justify fs-6"><%= @publication.description %></p>
+                      <% if @publication.categories.count >= 1 %>
+                        <h4 class="fs-6">Categorias</h4>
+                        <% @publication.categories.each do |category| %>
+                          <span class="badge bg-light text-dark"><i class="bi bi-check2-all"></i> <%= category.title %></span>
+                        <% end %>
+                      <% end %>
                       <hr>
                     </div>
                   </div>
-                  <div class="user-send-message">
-                    <h4 class="fs-6">Precio:
-                      <span class="badge badge-success"><i class="bi bi-cash-coin"></i> <%= @publication.price %></span>
-                    </h4>
-                    <h4 class="fs-6">Telefono:
-                      <span class="badge badge-info"><i class="bi bi-telephone-fill"></i> <%= @publication.phone %></span>
-                    </h4>
-                    <h4 class="fs-6">Dirección:
-                      <span class="badge badge-primary"><i class="bi bi-pin-map"></i> <%= @publication.address %></span>
-                    </h4>
+                  <div class="rating-star">
+                    <span class="fw-bolder">Precio: </span><span class="badge badge-success"><i class="bi bi-cash-coin"></i> <%= @publication.price %></span>
+                    <span class="fw-bolder">Telefono: </span><span class="badge badge-info"><i class="bi bi-telephone-fill"></i> <%= @publication.phone %></span>
+                    <span class="fw-bolder">Dirección: </span><span class="badge badge-info"><i class="bi bi-pin-map"></i> <%= @publication.address %></span>
                     <hr>
                   </div>
                   <div class="user-send-message">

@@ -2,8 +2,9 @@
 <div class="card-body mt-3">
   <h5 class="card-title mb-2"><%= publication.title %></h5>
   <p class="card-text mb-2"><%= simple_description publication.description %></p>
+  <span class="fw-bolder">Precio: </span><span class="badge bg-light text-dark"><i class="bi bi-cash-coin"></i> <%= publication.price %> </span>
+  <span class="fw-bolder">Fecha: </span><span class="badge bg-light text-dark"><i class="bi bi-calendar-check"></i> <%= date_format publication.created_at %></span>
 </div>
 <div class="card-footer">
-  <small class="text-muted"><%= date_format publication.created_at %></small>
-  <p class="text-end"><%= link_to "<i class=\"bi bi-arrow-return-right\"></i>Ver Mas".html_safe, publication_path(publication) %></p>
+  <p class="text-end mt-3"><%= link_to "<i class=\"bi bi-arrow-return-right\"></i>Ver Mas".html_safe, publication_path(publication) %></p>
 </div>
