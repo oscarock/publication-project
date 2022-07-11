@@ -1,0 +1,16 @@
+<%= render 'partials/messages' %>
+
+<div class="d-flex justify-content-between">
+  <div class="text-center col-md-6"><h4>Mis Publicaciones</h4></div>
+</div>
+<div class="cards-grid container-fluid w-75">
+  <div class="row row-cols-1 row-cols-md-3">
+    <% @publications.each do |publication| %>
+      <div class="col">
+        <div class="card border-secondary">
+          <%= render publication %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -6,8 +6,8 @@
         <li class="label"><i class="bi bi-arrow-left-right"></i>Catalogo de publicaciones</li>
         <li><%= link_to "<i class=\"bi bi-journals\"></i>Ver todas".html_safe, publications_path %></li>
         <% if current_user %>
+          <li><%= link_to "<i class=\"bi bi-journal-bookmark\"></i>Mis publicaciones".html_safe, my_publications_path %></li>
           <li><%= link_to "<i class=\"bi bi-journal-plus\"></i>Crear publicación".html_safe, new_publication_path %></li>
-          <li><a href="#"><i class="bi bi-journal-bookmark"></i>Mis publicaciones</a></li>
         <% end %>
 
         <% if current_user %>

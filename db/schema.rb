@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_09_015001) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_09_053146) do
   create_table "categories", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -37,6 +37,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_09_015001) do
     t.boolean "visible", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_publications_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,4 +56,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_09_015001) do
 
   add_foreign_key "publication_categories", "categories"
   add_foreign_key "publication_categories", "publications"
+  add_foreign_key "publications", "users"
 end

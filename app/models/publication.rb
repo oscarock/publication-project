@@ -28,6 +28,7 @@ class Publication < ApplicationRecord
   #relations
   has_many :publication_categories, :dependent => :destroy
   has_many :categories, through: :publication_categories
+  belongs_to :user
 
   #nested attributes
   accepts_nested_attributes_for :categories

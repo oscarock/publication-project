@@ -1,10 +1,11 @@
 class PublicationsController < ApplicationController
   before_action :authenticate_user!, :except => [:index]
-  before_action :set_publication, only: %i[ show edit update destroy ]
+  before_action :set_publication, only: %i[ show edit update destroy permit_validation ]
+  before_action :permit_validation, only: %i[edit update destroy]
 
   # GET /publications or /publications.json
   def index
-    @publications = Publication.all
+    @publications = Publication.where(visible: true)
   end
 
   # GET /publications/1 or /publications/1.json
@@ -23,6 +24,7 @@ class PublicationsController < ApplicationController
   # POST /publications or /publications.json
   def create
     @publication = Publication.new(publication_params)
+    @publication.user_id = current_user.id
 
     respond_to do |format|
       if @publication.save
@@ -58,6 +60,10 @@ class PublicationsController < ApplicationController
     end
   end
 
+  def my_publications
+    @publications = Publication.where(user_id: current_user.id)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_publication
@@ -67,5 +73,11 @@ class PublicationsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def publication_params
       params.require(:publication).permit(:title, :description, :price, :city, :address, :phone, :visible, category_ids: [])
+    end
+
+    def permit_validation
+      if @publication.user_id != current_user.id
+        redirect_to publications_path, alert: "No tiene permisos para esta publicación"
+      end
     end
 end

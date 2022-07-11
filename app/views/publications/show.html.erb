@@ -54,10 +54,12 @@
                     <hr>
                   </div>
                   <div class="user-send-message">
-                    <%= link_to "<i class=\"bi bi-journal-medical\"></i>Editar".html_safe, edit_publication_path(@publication), class: "btn btn-secondary btn-addon" %>
-                    <br><br>
-                    <%= button_to "<i class=\"bi bi-trash\"></i>Eliminar".html_safe, @publication, method: :delete, form: { data: { turbo_confirm: 'Esta seguro de eliminar la publicación ?' } }, class: "btn btn-danger btn-addon" %>
-                    <br><br>
+                    <% if @publication.user_id == current_user.id %>
+                      <%= link_to "<i class=\"bi bi-journal-medical\"></i>Editar".html_safe, edit_publication_path(@publication), class: "btn btn-secondary btn-addon" %>
+                      <br><br>
+                      <%= button_to "<i class=\"bi bi-trash\"></i>Eliminar".html_safe, @publication, method: :delete, form: { data: { turbo_confirm: 'Esta seguro de eliminar la publicación ?' } }, class: "btn btn-danger btn-addon" %>
+                      <br><br>
+                    <% end %>
                     <%= link_to "<i class=\"bi bi-arrow-bar-left\"></i>Regresar a publicaciones".html_safe, publications_path, class: "link-primary" %>
                   </div>
                 </div>
