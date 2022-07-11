@@ -5,7 +5,8 @@ class PublicationsController < ApplicationController
 
   # GET /publications or /publications.json
   def index
-    @publications = Publication.where(visible: true)
+    current_page = params[:page] ||= 1
+    @publications = Publication.where(visible: true).paginate(page: current_page, per_page: 6)
   end
 
   # GET /publications/1 or /publications/1.json
@@ -61,7 +62,8 @@ class PublicationsController < ApplicationController
   end
 
   def my_publications
-    @publications = Publication.where(user_id: current_user.id)
+    current_page = params[:page] ||= 1
+    @publications = Publication.where(user_id: current_user.id).paginate(page: current_page, per_page: 6)
   end
 
   private

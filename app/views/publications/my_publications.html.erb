@@ -12,5 +12,8 @@
         </div>
       </div>
     <% end %>
+    <div class="digg_pagination">
+      <%= will_paginate @publication, :container => false, :previous_label => 'Atrás', :next_label => 'Siguiente' %>
+    </div>
   </div>
 </div>
