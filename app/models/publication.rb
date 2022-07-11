@@ -35,4 +35,8 @@ class Publication < ApplicationRecord
 
   #upload images files
   has_many_attached :images, :dependent => :destroy
+
+  #slug
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 end
