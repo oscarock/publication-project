@@ -32,4 +32,7 @@ class Publication < ApplicationRecord
 
   #nested attributes
   accepts_nested_attributes_for :categories
+
+  #upload images files
+  has_many_attached :images, :dependent => :destroy
 end

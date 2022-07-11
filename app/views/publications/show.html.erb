@@ -9,15 +9,16 @@
                 <div class="col-lg-6">
                   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <img src="https://dummyimage.com/400x400/000/fff" class="d-block w-100" alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="https://dummyimage.com/400x400/000/fff" class="d-block w-100" alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="https://dummyimage.com/400x400/000/fff" class="d-block w-100" alt="...">
-                      </div>
+                      <% if @publication.images.present? %>
+                        <div class="carousel-item active">
+                          <img src="https://dummyimage.com/400x400/000/fff" class="d-block w-100" alt="...">
+                        </div>
+                        <% @publication.images.each do |images| %>
+                          <div class="carousel-item">
+                            <%= image_tag images, class: "d-block w-100", height: "450", width: "550" %>
+                          </div>
+                        <% end %>
+                      <% end %>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>

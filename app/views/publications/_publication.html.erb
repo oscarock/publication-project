@@ -1,4 +1,8 @@
-<img src="https://dummyimage.com/600x350/000/fff" class="card-img-top" alt="...">
+<% if publication.images.present? %>
+  <% publication.images.limit(1).each do |img| %>
+    <%= image_tag img, class: "card-img-top", height: "250", width: "350" %>
+  <% end %>
+<% end %>
 <div class="card-body mt-3">
   <h5 class="card-title mb-2"><%= publication.title %></h5>
   <p class="card-text mb-2"><%= simple_description publication.description %></p>
