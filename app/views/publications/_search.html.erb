@@ -1,0 +1,23 @@
+<div class="align-items-center">
+  <%= form_tag search_publications_path, method: :get do %>
+    <div class="row align-items-center g-6">
+      <div class="col-md-3">
+        <label class="visually-hidden">Titulo</label>
+        <%= text_field_tag :title, params[:title], class:"form-control border border-secondary", placeholder:"Titulo" %>
+      </div>
+      <div class="col-md-3">
+        <label class="visually-hidden">Categorias</label>
+        <%= select_tag :categories, options_from_collection_for_select(Category.all, "id", "title"), prompt: "--Selecionar categoria--", class: "form-control border border-secondary h-75" %>
+      </div>
+      <div class="col-md-3">
+        <label class="visually-hidden">Fecha</label>
+        <%= date_field_tag :date, params[:date], min: "2014-05-20", class:"form-control border border-secondary" %>
+      </div>
+      <div class="col-md-3">
+        <div class="d-grid gap-2">
+          <%= button_tag 'Buscar...', type: 'submit', class:"btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <%end %>
+</div>

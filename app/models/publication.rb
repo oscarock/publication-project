@@ -30,6 +30,9 @@ class Publication < ApplicationRecord
   has_many :categories, through: :publication_categories
   belongs_to :user
 
+  #scopes
+  scope :visible, -> { where(visible: true) }
+
   #nested attributes
   accepts_nested_attributes_for :categories
 

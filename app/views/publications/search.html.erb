@@ -1,9 +1,8 @@
-<%= render 'partials/messages' %>
-
 <div class="d-flex justify-content-between">
-  <div class="text-center col-md-12 mb-3 mt-3"><h4>Mis publicaciones</h4></div>
+  <div class="text-center col-md-12 mb-3 mt-3"><h4>Publicaciones</h4></div>
 </div>
 <div class="cards-grid container-fluid w-75">
+  <%= render "search" %>
   <div class="row row-cols-1 row-cols-md-3">
     <% @publications.each do |publication| %>
       <div class="col">

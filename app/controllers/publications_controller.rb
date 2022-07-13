@@ -6,7 +6,7 @@ class PublicationsController < ApplicationController
   # GET /publications or /publications.json
   def index
     current_page = params[:page] ||= 1
-    @publications = Publication.where(visible: true).paginate(page: current_page, per_page: 6)
+    @publications = Publication.paginate(page: current_page, per_page: 6).visible
   end
 
   # GET /publications/1 or /publications/1.json
@@ -63,7 +63,30 @@ class PublicationsController < ApplicationController
 
   def my_publications
     current_page = params[:page] ||= 1
-    @publications = Publication.where(user_id: current_user.id).paginate(page: current_page, per_page: 6)
+    @publications = Publication.where(user_id: current_user.id).paginate(page: current_page, per_page: 6).visible
+  end
+
+  def search
+    @title = params[:title]
+    @date = params[:date]
+    @categories = params[:categories]
+    current_page = params[:page] ||= 1
+    @publications = Publication.paginate(page: current_page, per_page: 6)
+      .includes(:categories)
+      .where("publications.title LIKE ?", "%#{@title}%")
+      .where("publications.created_at LIKE ?", "%#{@date}%")
+      .visible
+
+    unless @categories.empty?
+      @publications = Publication.paginate(page: current_page, per_page: 6)
+       .includes(:categories)
+       .where(categories: { id: @categories })
+       .visible
+    end
+
+    if @publications.count < 1
+      redirect_to publications_path, alert: "No se encontraron resultados"
+    end
   end
 
   private
