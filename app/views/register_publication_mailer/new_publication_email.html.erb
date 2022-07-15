@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+</head>
+<body>
+<h1>Creaste una nueva publicación <%= @publication.title %>.</h1>
+<p>Ver Detalles: </p>
+<p>Precio: <%= @publication.price %></p>
+<p>Ciudad: <%= @publication.city %></p>
+<p>Dirección: <%= @publication.address %></p>
+<p>Telefono: <%= @publication.phone %></p>
+<p>Categorias:</p>
+<ul>
+  <% @publication.categories.each do |category| %>
+    <li><%= category.title %></li>
+  <% end %>
+</ul>
+<p>Descripción: </p>
+<p><%= @publication.description %></p>
+<p>Imagenes: </p>
+<% @publication.images.each do |images| %>
+  <%= image_tag images, height: "250", width: "350" %>
+<% end %>
+</body>
+</html>

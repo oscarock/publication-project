@@ -2,6 +2,7 @@ class PublicationsController < ApplicationController
   before_action :authenticate_user!, :except => [:index]
   before_action :set_publication, only: %i[ show edit update destroy permit_validation ]
   before_action :permit_validation, only: %i[edit update destroy]
+  after_action :send_email, only: %i[ create ]
 
   # GET /publications or /publications.json
   def index
@@ -87,6 +88,10 @@ class PublicationsController < ApplicationController
     if @publications.count < 1
       redirect_to publications_path, alert: "No se encontraron resultados"
     end
+  end
+
+  def send_email
+    RegisterPublicationMailer.with(publication: @publication, user: current_user.email).new_publication_email.deliver_later(wait: 5.seconds)
   end
 
   private

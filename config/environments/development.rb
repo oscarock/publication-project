@@ -11,6 +11,8 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  config.active_job.queue_adapter = :sidekiq
+
   # Show full error reports.
   config.consider_all_requests_local = true
 
@@ -35,6 +37,16 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :user_name => '85bfe87603d3a3',
+    :password => '06e324e87fe4f0',
+    :address => 'smtp.mailtrap.io',
+    :domain => 'smtp.mailtrap.io',
+    :port => '2525',
+    :authentication => :cram_md5
+  }
 
   #config action mailer local
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }

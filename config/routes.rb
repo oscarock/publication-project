@@ -10,4 +10,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "publications#index"
+
+  #jobs sidekid
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 end
