@@ -9,4 +9,5 @@ pin "jquery", to: "jquery.min.js"
 pin "jquery_ujs", to: "jquery_ujs.js"
 pin "popper", to: "popper.js", preload:true
 pin "bootstrap", to: "bootstrap.min.js", preload:true
-
+pin "trix"
+pin "@rails/actiontext", to: "actiontext.js"

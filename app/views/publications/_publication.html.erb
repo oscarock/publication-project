@@ -5,7 +5,7 @@
 <% end %>
 <div class="card-body mt-3">
   <h5 class="card-title mb-2"><%= publication.title %></h5>
-  <p class="card-text mb-2"><%= simple_description publication.description %></p>
+  <p class="card-text mb-2"><%= truncate(strip_tags(publication.description.to_s), length: 200, omission: '...........') %></p>
   <span class="fw-bolder">Precio: </span><span class="badge bg-light text-dark"><i class="bi bi-cash-coin"></i> <%= publication.price %> </span>
   <span class="fw-bolder">Fecha: </span><span class="badge bg-light text-dark"><i class="bi bi-calendar-check"></i> <%= date_format publication.created_at %></span>
 </div>

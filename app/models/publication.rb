@@ -30,6 +30,9 @@ class Publication < ApplicationRecord
   has_many :categories, through: :publication_categories
   belongs_to :user
 
+  #rich text
+  has_rich_text :description
+
   #scopes
   scope :visible, -> { where(visible: true) }
 

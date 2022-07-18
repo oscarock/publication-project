@@ -5,6 +5,8 @@ import "jquery"
 import "jquery_ujs"
 import "popper"
 import "bootstrap"
+import "trix"
+import "@rails/actiontext"
 
 $('.toast-top-right').delay(2000).hide(500);
 
