@@ -18,6 +18,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  #validations
+  validates :name, presence: true
+
   #relations
   has_many :publications
 end

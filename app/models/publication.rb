@@ -12,6 +12,8 @@
 #  visible     :boolean          default(TRUE)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  user_id     :integer          not null
+#  slug        :string
 #
 class Publication < ApplicationRecord
   #validations
