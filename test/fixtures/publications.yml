@@ -12,22 +12,26 @@
 #  visible     :boolean          default(TRUE)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  user_id     :integer          not null
+#  slug        :string
 #
 
-one:
-  title: MyString
-  description: MyText
-  price: 1
-  city: MyString
-  address: MyString
-  phone: MyString
-  visible: false
+publication1:
+  title: prueba test
+  description: Lorem Ipsum is simply dummy text of the printing and typesetting industry
+  price: 100
+  city: Bogota
+  address: cra 170
+  phone: 12345678
+  visible: true
+  user_id: <%= ActiveRecord::FixtureSet.identify(:user1) %>
 
-two:
-  title: MyString
-  description: MyText
-  price: 1
-  city: MyString
-  address: MyString
-  phone: MyString
+publication2:
+  title: prueba test dos
+  description: Lorem Ipsum is simply dummy text of the printing and typesetting industry
+  price: 200
+  city: Cali
+  address: cra 100
+  phone: 123456763
   visible: false
+  user_id: <%= ActiveRecord::FixtureSet.identify(:user2) %>

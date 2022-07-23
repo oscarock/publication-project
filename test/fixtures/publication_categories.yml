@@ -9,10 +9,14 @@
 #  updated_at     :datetime         not null
 #
 
-one:
-  publication: one
-  category: one
+publication_category1:
+  publication: <%= ActiveRecord::FixtureSet.identify(:publication1) %>
+  category: <%= ActiveRecord::FixtureSet.identify(:category1) %>
 
-two:
-  publication: two
-  category: two
+publication_category2:
+  publication: <%= ActiveRecord::FixtureSet.identify(:publication1) %>
+  category: <%= ActiveRecord::FixtureSet.identify(:category3) %>
+
+publication_category3:
+  publication: <%= ActiveRecord::FixtureSet.identify(:publication3) %>
+  category: <%= ActiveRecord::FixtureSet.identify(:category2) %>

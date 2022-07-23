@@ -11,7 +11,8 @@
 require "test_helper"
 
 class CategoryTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  context 'category relations validation' do
+    should have_many(:publication_categories)
+  end
 end

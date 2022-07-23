@@ -9,10 +9,14 @@
 #  updated_at  :datetime         not null
 #
 
-one:
-  title: MyString
+category1:
+  title: Telefonos
   description: MyText
 
-two:
-  title: MyString
+category2:
+  title: Consolas
+  description: MyText
+
+category3:
+  title: Musica
   description: MyText

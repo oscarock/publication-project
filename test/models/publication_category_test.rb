@@ -11,7 +11,9 @@
 require "test_helper"
 
 class PublicationCategoryTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  context 'publication category relations validation' do
+    should belong_to(:publication)
+    should belong_to(:category)
+  end
 end
