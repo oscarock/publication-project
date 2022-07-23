@@ -1,5 +1,5 @@
 class PublicationsController < ApplicationController
-  before_action :authenticate_user!, :except => [:index]
+  before_action :authenticate_user!, :except => [:index, :search]
   before_action :set_publication, only: %i[ show edit update destroy permit_validation ]
   before_action :permit_validation, only: %i[edit update destroy]
   after_action :send_email, only: %i[ create ]
@@ -25,16 +25,14 @@ class PublicationsController < ApplicationController
 
   # POST /publications or /publications.json
   def create
-    @publication = Publication.new(publication_params)
+    @publication = Publication.create(publication_params)
     @publication.user_id = current_user.id
 
     respond_to do |format|
       if @publication.save
-        format.html { redirect_to publications_path, notice: "Publicación creada con exito." }
-        format.json { render :show, status: :created, location: @publication }
+        format.html { redirect_to publication_path(@publication), notice: "Publicación creada con exito." }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @publication.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -44,10 +42,8 @@ class PublicationsController < ApplicationController
     respond_to do |format|
       if @publication.update(publication_params)
         format.html { redirect_to publication_url(@publication), notice: "Publicación editada con exito." }
-        format.json { render :show, status: :ok, location: @publication }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @publication.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,7 +54,6 @@ class PublicationsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to publications_path, notice: "Publicación eliminada con exito." }
-      format.json { head :no_content }
     end
   end
 
@@ -76,14 +71,8 @@ class PublicationsController < ApplicationController
       .includes(:categories)
       .where("publications.title LIKE ?", "%#{@title}%")
       .where("publications.created_at LIKE ?", "%#{@date}%")
+      .where("categories.id LIKE ?", "%#{@categories}%").references(:categories)
       .visible
-
-    unless @categories.empty?
-      @publications = Publication.paginate(page: current_page, per_page: 6)
-       .includes(:categories)
-       .where(categories: { id: @categories })
-       .visible
-    end
 
     if @publications.count < 1
       redirect_to publications_path, alert: "No se encontraron resultados"
