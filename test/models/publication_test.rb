@@ -16,8 +16,11 @@
 #  slug        :string
 #
 require "test_helper"
+require 'active_storage_validations/matchers'
 
 class PublicationTest < ActiveSupport::TestCase
+
+  extend ActiveStorageValidations::Matchers
 
   context 'publication inputs validations' do
     should validate_presence_of(:title).with_message("El titulo es obligatorio")
@@ -27,6 +30,7 @@ class PublicationTest < ActiveSupport::TestCase
     should validate_presence_of(:address).with_message("La direccion es obligatorio")
     should validate_presence_of(:phone).with_message("El telefono es obligatorio")
     should validate_numericality_of(:phone).only_integer.with_message("El telefono debe tener solo numeros")
+    should validate_attached_of(:images)
   end
 
   context 'publication relations validation' do

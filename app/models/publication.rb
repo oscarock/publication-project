@@ -26,6 +26,8 @@ class Publication < ApplicationRecord
   validates :address, presence: { message: "La direccion es obligatorio"}
   validates :phone, presence: { message: "El telefono es obligatorio"}
   validates :phone, numericality: { only_integer: true, message: "El telefono debe tener solo numeros" }
+  validates :images, attached: { message: "La imagen debe ser obligatiria"}
+  validates :images, content_type: [:png, :jpg, :jpeg]
 
   #relations
   has_many :publication_categories, :dependent => :destroy

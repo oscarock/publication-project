@@ -80,7 +80,9 @@ class PublicationsController < ApplicationController
   end
 
   def send_email
-    RegisterPublicationMailer.with(publication: @publication, user: current_user.email).new_publication_email.deliver_later(wait: 5.seconds)
+    if @publication.id
+      RegisterPublicationMailer.with(publication: @publication, user: current_user.email).new_publication_email.deliver_later(wait: 5.seconds)
+    end
   end
 
   private

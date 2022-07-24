@@ -42,7 +42,8 @@ class PublicationsControllerTest < ActionController::TestCase
         address: "cra 200",
         phone: "1234560",
         visible: true,
-        user_id: @user.id
+        user_id: @user.id,
+        images: fixture_file_upload('test.png')
       }}
     end
 
