@@ -73,6 +73,8 @@ Rails.application.configure do
     :password => ENV['DOMAIN_PASSWORD_MAILGUN']
   }
 
+  config.action_mailer.default_url_options = { :host => 'dry-lake-75877.heroku.com' }
+
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
