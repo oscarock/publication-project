@@ -62,6 +62,17 @@ Rails.application.configure do
   config.active_job.queue_adapter = :sidekiq
   # config.active_job.queue_name_prefix = "publication_project_production"
 
+  #configure send emails
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => ENV['DOMAIN_MAILGUN'],
+    :user_name => ENV['DOMAIN_USERNAME_MAILGUN'],
+    :password => ENV['DOMAIN_PASSWORD_MAILGUN']
+  }
+
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
