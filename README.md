@@ -1,24 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Prerequisitos
+debe tener estas herramientas previamente instaladas 
 
-Things you may want to cover:
+* Github
+* Ruby 3.1.0
+* Rails 7.0.3
 
-* Ruby version
+### 1. Clone el repositorio 
+ * https://github.com/oscarock/publication-project
 
-* System dependencies
+### 2. Ejecutar en la consola
+* `bundle install` 
 
-* Configuration
+### 3. Ejecutar las migraciones
+* `rails db:migrate`
 
-* Database creation
+### 4. Ejecutar los seeds del proyecto
+* `rails db:seed`
 
-* Database initialization
+### 5. Ejecutar el servidor 
+* `rails server`
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 6. Link del proyecto en produccion
+* link: https://dry-lake-75877.herokuapp.com
