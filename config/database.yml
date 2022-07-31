@@ -22,8 +22,8 @@ test:
 
 production:
   adapter: mysql2
+  url: <%= ENV['DATABASE_URL'] %>
   database: <%= ENV["DB_HOST"] %>
   password: <%= ENV["DB_PASSWORD"] %>
   user: <%= ENV["DB_USER"] %>
-  socket: /var/run/mysqld/mysqld.sock
 
