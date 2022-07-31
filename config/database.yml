@@ -22,8 +22,11 @@ test:
 
 production:
   adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   url: <%= ENV['DATABASE_URL'] %>
   database: <%= ENV["DB_HOST"] %>
   password: <%= ENV["DB_PASSWORD"] %>
   user: <%= ENV["DB_USER"] %>
+  socket: /var/run/mysqld/mysqld.sock
 
